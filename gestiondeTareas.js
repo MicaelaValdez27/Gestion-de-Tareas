@@ -103,8 +103,47 @@ function mostrarTareasNoCompletadas(){
         if(!tarea.completada){
             console.log("- Nombre: " + tarea.nombre + ", Categoria: " + categoriasNombres[tarea.categoria]);
         }
-    })
+    });
 }
+
+
+//funcion para ordenar tareas por la propiedad 'nombre' utilizando BublleSort
+function ordenarTareasPorNombre(){
+    let total = tareas.length;
+
+    for(let j = 0 ; j < total ; j++){
+
+        for(let i = 0 ; i < total - 1 ; i++){
+            if(tareas[i].nombre > tareas[i+1].nombre){
+    
+                let temp = tareas[i];
+                tareas[i] = tareas[i + 1];
+                tareas[i +1] = temp;
+            }
+        }
+    }
+}
+
+
+
+//funcion para ordenar tareas por la propiedad 'fechaLimite' utilizando BublleSort
+function ordenarTareasPorFechaLimite(){
+    let total = tareas.length;
+
+    for(let j = 0 ; j < total ; j++){
+
+        for(let i = 0 ; i < total - 1 ; i++){
+            if(tareas[i].fechaLimite > tareas[i+1].fechaLimite){
+    
+                let temp = tareas[i];
+                tareas[i] = tareas[i + 1];
+                tareas[i +1] = temp;
+            }
+        }
+    }
+}
+
+
 
 
 
@@ -121,6 +160,8 @@ function mostrarMenu(){
     console.log("8. Filtrar tareas por categoria");
     console.log("9. Visualizar cantidad de tareas completadas por categoria");
     console.log("10. Visualizar todas las tareas no completadas");
+    console.log("11. Ordenar las tareas alfabeticamente");
+    console.log("12. Ordenar las tareas por fecha limite");
     console.log("0. Salir");
 }
 
@@ -214,6 +255,18 @@ function interactuarConUsuario(){
 
             case 10:
                     mostrarTareasNoCompletadas();
+                    break;
+
+            case 11:
+                    ordenarTareasPorNombre();
+                    console.log("Tareas por nombre: ");
+                    console.log(tareas);
+                    break;
+
+            case 12:
+                    ordenarTareasPorFechaLimite();
+                    console.log("Tareas por fecha: ");
+                    console.log(tareas);
                     break;
         
             default:
